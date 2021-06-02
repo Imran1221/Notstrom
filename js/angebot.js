@@ -9,7 +9,7 @@ function init() {
     document.getElementById("lupe2").addEventListener("click", function (e) { zeigeKreis(250, 85, this.id); });
     document.getElementById("lupe3").addEventListener("click", function (e) { zeigeKreis(150, 150, this.id); });
     document.getElementById("knopf1").addEventListener("click", function (e) { zeigePreis(e); });
-    document.getElementById("animation").addEventListener("click", function (e) { zeigeAnimation(e); });
+    document.getElementById("animation").addEventListener("click", function (e) { starteAnimation(); });
     //document.getElementById("knopf1").addEventListener("click", function (e) { wechslePreis(e); });
     document.getElementById("close").addEventListener("click", function (e) { schliessePopup(e); });
     //document.getElementById("close").addEventListener("click", function (e) { schliessePopup(e); });
@@ -102,24 +102,53 @@ function zeigeKreis(x, y, id) {
     }
 }
 /*----------------------animation--------------------------*/
-let intervallId;
-let kreisX = 50;
-let kreisY = 900;
-function zeigeAnimation(e) {
+let intervalId;
+let kreisX;
+let kreisY;
+let clicked = false;
+function starteAnimation() {
+    clicked = !clicked;
+    kreisX = 500;
+    kreisY = 85;
     let kreis = document.getElementById("kreis");
-
+    kreis.style.top = kreisY + "px";
+    kreis.style.left = kreisX + "px";
     kreis.style.visibility = "visible";
-    intervallId = setInterval(bewegeKreis(e), 30);
+    intervalId = window.setInterval(bewegeKreis, 50);
+    document.getElementById("motor").style.color = "black";
 }
 function bewegeKreis(e) {
-    if (kreis.style.top == "150px" && kreis.style.left == "150px") {
-        clearIntervall(intervallId);
+    let kreis = document.getElementById("kreis");
+    //Highlights der Features
+    if (kreisX == 400 && kreisY == 85) {
+        document.getElementById("steckdosen").style.color = "red";
+        kreis.style.opacity = 0.8;
+    }
+    else if (kreisX == 250 && kreisY == 85) {
+        document.getElementById("schalter").style.color = "red";
+        document.getElementById("steckdosen").style.color = "black";
+        kreis.style.opacity = 0.8;
+    }
+    else if (kreisY == 150) {
+        document.getElementById("motor").style.color = "red";
+        document.getElementById("schalter").style.color = "black";
+        kreis.style.opacity = 0.8;
     }
     else {
-        kreis.style.top = top + "px";
-        kreis.style.left = left + "px";
+        kreis.style.opacity = 0.5;
     }
-
+    kreisX -= 5;
+    if (kreisX < 250) {
+        kreisY += 5;
+    }
+    kreis.style.top = kreisY + "px";
+    kreis.style.left = kreisX + "px";
+    if (kreisY > 150) {
+        window.clearInterval(intervalId);
+    }
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 /*---------------------------------------------------- */
 function zeigeLiveChat() {
