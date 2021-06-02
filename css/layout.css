@@ -83,10 +83,12 @@
 	}
 	#popup{
 		border: solid 1px black;
+		background-color: white;
 		width: 340px;
 		height: 125px;
 		position: absolute;
-		visibility: hidden;
+		display: none;
+		z-index: 2;
 	}
 	#header_elements{
 		display: flex;

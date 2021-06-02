@@ -12,7 +12,8 @@ function init() {
     document.getElementById("animation").addEventListener("click", function (e) { zeigeAnimation(e); });
     //document.getElementById("knopf1").addEventListener("click", function (e) { wechslePreis(e); });
     document.getElementById("close").addEventListener("click", function (e) { schliessePopup(e); });
-    setTimeout(zeigeLiveChat(), 1000);
+    document.getElementById("close").addEventListener("click", function (e) { schliessePopup(e); });
+    setTimeout(zeigeLiveChat(), 10000);
 }
 
 function markiereSonderpreis(e) {
@@ -152,12 +153,12 @@ function bewegeKreis(e) {
 function zeigeLiveChat() {
     console.log("Ladet message");
     let fenster = document.getElementById("popup");
-    fenster.style.visibility = "visible";
+    fenster.style.display = "block";
 
     console.log("Window inner Height: " + window.innerHeight);
     console.log("Window inner Width: " + window.innerWidth);
-    fenster.style.top = window.innerHeight / 2 + "px";
-    fenster.style.left = window.innerWidth / 2 + "px";
+    fenster.style.top = (window.innerHeight - 125) / 2 + "px";
+    fenster.style.left = (window.innerWidth - 340) / 2 + "px";
 }
 
 function schliessePopup(e) {
