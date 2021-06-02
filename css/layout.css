@@ -84,8 +84,9 @@
 	#popup{
 		border: solid 1px black;
 		width: 340px;
-		height: 60px;
+		height: 125px;
 		position: absolute;
+		visibility: hidden;
 	}
 	#header_elements{
 		display: flex;
@@ -94,9 +95,19 @@
 		z-index: 1;
 		position: absolute;
 		margin-left: 250px;
+	}
 
+	#antworten{
+		display: flex;
+		justify-content: space-around;
+		flex-direction: row;
+		text-align: center;
 	}
-	#message{
-		margin-left: 100px;
+	#antworten a{
+		text-decoration: underline;
 	}
+	#antworten a:hover{
+		cursor: pointer;
+	}
+
 	
