@@ -5,7 +5,9 @@ function init() {
     document.getElementById("bild").addEventListener("click", function (e) { tauscheBild(e); });
     document.getElementById("bild").addEventListener("mouseover", function (e) { tauscheBild(e); });
     document.getElementById("bild").addEventListener("mouseout", function (e) { tauscheBild(e); });
-    document.getElementById("lupe").addEventListener("click", function (e) { zeigeKreis(e); });
+    document.getElementById("lupe").addEventListener("click", function (e) { zeigeKreis(e, "steckdose"); });
+    document.getElementById("lupe2").addEventListener("click", function (e) { zeigeKreis(e, "schalter"); });
+    document.getElementById("lupe3").addEventListener("click", function (e) { zeigeKreis(e, "dieselmotor"); });
     document.getElementById("knopf1").addEventListener("click", function (e) { zeigePreis(e); });
     //document.getElementById("knopf1").addEventListener("click", function (e) { wechslePreis(e); });
 }
@@ -78,14 +80,48 @@ function tauscheBild(e) {
     }
 }
 
-function zeigeKreis(e) {
+function zeigeKreis(e, zweck) {
     let kreis = document.getElementById("kreis");
     let lupe = document.getElementById("lupe");
-    if (kreis.style.visibility == "hidden") {
-        kreis.style.visibility = "visible";
-        lupe.style.opacity = "0.3";
-    } else {
-        kreis.style.visibility = "hidden";
-        lupe.style.opacity = "unset";
+    let lupe2 = document.getElementById("lupe2");
+    let lupe3 = document.getElementById("lupe3");
+    if (zweck == "steckdose") {
+        if (kreis.style.visibility == "hidden") {
+            kreis.style.visibility = "visible";
+            lupe.style.opacity = "0.3";
+            kreis.style.top = "85px";
+            kreis.style.left = "400px";
+            lupe2.style.opacity = "unset";
+            lupe3.style.opacity = "unset";
+        } else {
+            kreis.style.visibility = "hidden";
+            lupe.style.opacity = "unset";
+        }
+    }
+    else if (zweck == "schalter") {
+        if (kreis.style.visibility == "hidden") {
+            kreis.style.visibility = "visible";
+            lupe2.style.opacity = "0.3";
+            kreis.style.top = "85px";
+            kreis.style.left = "250px";
+            lupe1.style.opacity = "unset";
+            lupe3.style.opacity = "unset";
+        } else {
+            kreis.style.visibility = "hidden";
+            lupe2.style.opacity = "unset";
+        }
+    }
+    else {
+        if (kreis.style.visibility == "hidden") {
+            kreis.style.visibility = "visible";
+            lupe3.style.opacity = "0.3";
+            kreis.style.top = "150px";
+            kreis.style.left = "150px";
+            lupe1.style.opacity = "unset";
+            lupe2.style.opacity = "unset";
+        } else {
+            kreis.style.visibility = "hidden";
+            lupe3.style.opacity = "unset";
+        }
     }
 }
