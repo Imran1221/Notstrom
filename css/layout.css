@@ -81,4 +81,22 @@
 		position: absolute;
 		visibility: hidden;
 	}
+	#popup{
+		border: solid 1px black;
+		width: 340px;
+		height: 60px;
+		position: absolute;
+	}
+	#header_elements{
+		display: flex;
+	}
+	#elements{
+		z-index: 1;
+		position: absolute;
+		margin-left: 250px;
+
+	}
+	#message{
+		margin-left: 100px;
+	}
 	

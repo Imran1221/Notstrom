@@ -9,7 +9,9 @@ function init() {
     document.getElementById("lupe2").addEventListener("click", function (e) { zeigeKreis(e, "schalter"); });
     document.getElementById("lupe3").addEventListener("click", function (e) { zeigeKreis(e, "dieselmotor"); });
     document.getElementById("knopf1").addEventListener("click", function (e) { zeigePreis(e); });
+    document.getElementById("animation").addEventListener("click", function (e) { zeigeAnimation(e); });
     //document.getElementById("knopf1").addEventListener("click", function (e) { wechslePreis(e); });
+    let livechat = setTimeout(zeigeLiveChat(e), 100);
 }
 
 function markiereSonderpreis(e) {
@@ -124,4 +126,29 @@ function zeigeKreis(e, zweck) {
             lupe3.style.opacity = "unset";
         }
     }
+}
+/*----------------------animation--------------------------*/
+let intervallId;
+let kreisX = 50;
+let kreisY = 900;
+function zeigeAnimation(e) {
+    let kreis = document.getElementById("kreis");
+
+    kreis.style.visibility = "visible";
+    intervallId = setInterval(bewegeKreis(e), 30);
+}
+function bewegeKreis(e) {
+    if (kreis.style.top == "150px" && kreis.style.left == "150px") {
+        clearIntervall(intervallId);
+    }
+    else {
+        kreis.style.top = top + "px";
+        kreis.style.left = left + "px";
+    }
+
+}
+/*---------------------------------------------------- */
+function zeigeLiveChat(e) {
+    let popup = document.getElementById("popup");
+    popup.style.top = "50px";
 }
