@@ -81,9 +81,13 @@
 		position: absolute;
 		visibility: hidden;
 	}
+	#animation:hover{
+		cursor: pointer;
+	}
 	#popup{
 		border: solid 1px black;
-		background-color: white;
+		text-align: center;
+		background-color: #F6f6f6;
 		width: 340px;
 		height: 125px;
 		position: absolute;
@@ -111,9 +115,8 @@
 	#antworten a:hover{
 		cursor: pointer;
 	}
-	#animation:hover{
+	#close:hover{
 		cursor: pointer;
-
 	}
 
 	

@@ -9,11 +9,11 @@ function init() {
     document.getElementById("lupe2").addEventListener("click", function (e) { zeigeKreis(250, 85, this.id); });
     document.getElementById("lupe3").addEventListener("click", function (e) { zeigeKreis(150, 150, this.id); });
     document.getElementById("knopf1").addEventListener("click", function (e) { zeigePreis(e); });
-    document.getElementById("animation").addEventListener("click", function (e) { starteAnimation(); });
     //document.getElementById("knopf1").addEventListener("click", function (e) { wechslePreis(e); });
+    document.getElementById("animation").addEventListener("click", function (e) { starteAnimation(); });
     document.getElementById("close").addEventListener("click", function (e) { schliessePopup(e); });
-    //document.getElementById("close").addEventListener("click", function (e) { schliessePopup(e); });
-    setTimeout(zeigeLiveChat, 10000);
+    document.getElementById("close2").addEventListener("click", function (e) { schliessePopup(e); });
+    setTimeout(zeigeLiveChat, 1000);
 }
 
 function markiereSonderpreis(e) {
@@ -105,9 +105,9 @@ function zeigeKreis(x, y, id) {
 let intervalId;
 let kreisX;
 let kreisY;
-let clicked = false;
+let intervalTimer;
 function starteAnimation() {
-    clicked = !clicked;
+    intervalTimer = setInterval(starteAnimationTimer, 1000);
     kreisX = 500;
     kreisY = 85;
     let kreis = document.getElementById("kreis");
@@ -147,21 +147,54 @@ function bewegeKreis(e) {
         window.clearInterval(intervalId);
     }
 }
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+
+// Set the date we're counting down to
+var countDownDate = new Date().getTime() + 5000;
+
+// Update the count down every 1 second
+function starteAnimationTimer() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("demo").innerHTML = seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(intervalTimer);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+};
 /*---------------------------------------------------- */
+
 function zeigeLiveChat() {
     console.log("Ladet message");
-    let fenster = document.getElementById("popup");
-    fenster.style.display = "block";
+    let popup = document.getElementById("popup");
+    popup.style.display = "block";
 
-    console.log("Window inner Height: " + window.innerHeight);
-    console.log("Window inner Width: " + window.innerWidth);
-    fenster.style.top = (window.innerHeight - 125) / 2 + "px";
-    fenster.style.left = (window.innerWidth - 340) / 2 + "px";
+    let hoehe = window.innerHeight;
+    let breite = window.innerWidth;
+    console.log("Window inner Height: " + hoehe + "\nWindow inner Width: " + breite);
+
+    let breitePopup = getComputedStyle(popup).width;
+    let hoehePopup = getComputedStyle(popup).height;
+    console.log("Popup Height: " + hoehePopup + "\nPopup Width: " + breitePopup);
+
+    let abstandLeft = (breite - 340) / 2;
+    let abstandTop = (hoehe - 125) / 2;
+    console.log("Abstand Top: " + abstandTop + "\nAbstand Left " + abstandLeft);
+
+    popup.style.top = abstandTop + "px";
+    popup.style.left = abstandLeft + "px";
 }
-
+window.addEventListener("resize", zeigeLiveChat);
 function schliessePopup(e) {
     let popup = document.getElementById("popup");
     popup.style.display = "none";
