@@ -2,31 +2,62 @@
 <html>
 
 <head>
-<meta charset="utf8">
-<title>Notstrom Mustermann GmbH</title>
-<link rel="stylesheet" href="css/layout.css"/>
+    <meta charset="utf8">
+    <title>Notstrom Mustermann GmbH</title>
+    <link rel="stylesheet" href="css/layout.css" />
+    <script src="js/bestellformular.js"></script>
 </head>
 
 <body>
-<div id='rahmen'>
+    <div id='rahmen'>
 
-<h1 class="ueberschrift1">Notstrom Mustermann GmbH</h1>
+        <h1 class="ueberschrift1">Notstrom Mustermann GmbH</h1>
 
-<h2 class="ueberschrift2">Ihr Notstromanlagen-Spezialist in Stuttgart</h2>
+        <h2 class="ueberschrift2">Ihr Notstromanlagen-Spezialist in Stuttgart</h2>
 
-<h3 class="ueberschrift3">Verkauf - Wartung - Planung - Service</h3>
+        <h3 class="ueberschrift3">Verkauf - Wartung - Planung - Service</h3>
 
-<hr/>
+        <hr />
 
-<h2 class="angebot">Bestellformular Notstromanlage X2345+</h2>
+        <h2 class="angebot">Bestellformular Notstromanlage X2345+</h2>
 
-<p>Bestellung von ...</p>
+        <form name="bestellformular">
+            <p>Bestellung von <input type="number" min="3" max="10" name="anzahl" id="anz" autocomplete="off" />
+                Notstromanlagen X265467
+                zum Preis von 999Euro.</p>
 
-<hr>
+            <p>Gesamtpreis: <strong id="summe">0</strong>
+                <select name="waehrung" id="waehrung">
+                    <option>EUR</option>
+                    <option>CHF</option>
+                    <option>USD</option>
+                </select>
+                <button type="button" id="preisRechner">Preis berechnen</button>
+            </p>
 
-<p class="unten"><a href="index.html">Startseite</a> - <a href="#">Kontakt</a> - <a href="#">Anfahrt</a> - <a href="#">Impressum</a></p>
+            <p>Firma:<br />
+                <input type="text" name="firma" required="required" />
+            </p>
+            <p>Straße:<br />
+                <input type="text" name="str" />
+            </p>
+            <p>PLZ:<br />
+                <input type="text" name="plz" />
+            </p>
+            <p>Ort:<br />
+                <input type="text" name="ort" />
+            </p>
+            <p>
+                <button type="button" id="bestellen">kostenpflichtig bestellen</button>
+            </p>
+        </form>
 
-</div>
+        <hr>
+
+        <p class="unten"><a href="index.html">Startseite</a> - <a href="#">Kontakt</a> - <a href="#">Anfahrt</a> - <a
+                href="#">Impressum</a></p>
+
+    </div>
 
 </body>
 

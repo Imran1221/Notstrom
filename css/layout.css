@@ -76,6 +76,8 @@
 		border-radius:5px;
 		padding:8px
 	}
+
+	/*---------------Gebuehren--------------*/
 	#kreis
 	{
 		position: absolute;
@@ -118,5 +120,8 @@
 	#close:hover{
 		cursor: pointer;
 	}
-
+	/*---------------Bestellformular---------------------*/
+	#anz{
+		width: 50px;
+	}
 	
