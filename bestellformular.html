@@ -21,7 +21,7 @@
 
         <h2 class="angebot">Bestellformular Notstromanlage X2345+</h2>
 
-        <form name="bestellformular">
+        <form name="bestellformular" id="bestellformular">
             <p>Bestellung von <input type="number" min="3" max="10" name="anzahl" id="anz" autocomplete="off" />
                 Notstromanlagen X265467
                 zum Preis von 999Euro.</p>
@@ -38,17 +38,44 @@
             <p>Firma:<br />
                 <input type="text" name="firma" required="required" />
             </p>
+
             <p>Straße:<br />
                 <input type="text" name="str" />
+            <p id="strValidierung"></p>
             </p>
-            <p>PLZ:<br />
+
+            <p><label for="plz">PLZ</label><br />
                 <input type="text" name="plz" />
+            <p id="plzValidierung"></p>
             </p>
+
             <p>Ort:<br />
                 <input type="text" name="ort" />
             </p>
+
             <p>
-                <button type="button" id="bestellen">kostenpflichtig bestellen</button>
+                Anrede: <input type="radio" name="anrede" id="anrede1" value="f" />Frau
+                <input type="radio" name="anrede" id="anrede2" value="m" />Mann
+            </p>
+
+            <p>Email:<br />
+                <input type="text" name="email" />
+            </p>
+
+            <p>Lieferung durch:<br />
+                <select name="paketdienst">
+                    <option>DHL</option>
+                    <option>UPS</option>
+                    <option>Hermes</option>
+                </select>
+                <a id="info">[info]</a>
+            </p>
+            <p>
+                <input type="checkbox" name="agb" value="ja"> Datenschutz AGB zustimmem
+            </p>
+
+            <p>
+                <button type="submit"><strong>kostenpflichtig</strong> bestellen</button>
             </p>
         </form>
 
