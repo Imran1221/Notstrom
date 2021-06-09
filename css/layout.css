@@ -124,12 +124,6 @@
 	#anz{
 		width: 50px;
 	}
-	#strValidierung{
-		display: none;
-	}
-	#plzValidierung{
-		display: none;
-	}
 	#info{
 		color: blue;
 		text-decoration: underline;
