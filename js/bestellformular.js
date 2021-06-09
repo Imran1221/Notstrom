@@ -26,11 +26,13 @@ function pruefeFormular(evt) {
     let emailFehler = document.getElementById("emailValidierung");
     let anredeFehler = document.getElementById("anredeValidierung");
     let agbFehler = document.getElementById("agbValidierung");
+    let ortFehler = document.getElementById("ortValidierung");
     strFehler.innerHTML = "";
     plzFehler.innerHTML = "";
     emailFehler.innerHTML = "";
     anredeFehler.innerHTML = "";
     agbFehler.innerHTML = "";
+    ortFehler.innerHTML = "";
     if (document.bestellformular.str.value == "") {
         strFehler.innerHTML = "</br>Bitte geben Sie eine valide Straße ein!";
         strFehler.style.color = "red";
@@ -44,6 +46,12 @@ function pruefeFormular(evt) {
     } else if (document.bestellformular.plz.value.length < 4 || document.bestellformular.plz.value.length > 5) {
         plzFehler.innerHTML = "</br>Bitte geben Sie eine vier- oder fünfstellige Postleitzahl ein!";
         plzFehler.style.color = "red";
+        evt.preventDefault();
+    }
+
+    if (document.bestellformular.ort.value == "") {
+        ortFehler.innerHTML = "</br>Bitte geben Sie Ihre Ortschaft ein!";
+        ortFehler.style.color = "red";
         evt.preventDefault();
     }
 
