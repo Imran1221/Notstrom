@@ -7,6 +7,8 @@ function init() {
     document.getElementById("waehrung").addEventListener("change", berechnePreis);
     document.bestellformular.addEventListener("submit", function (evt) { pruefeFormular(evt) });
     document.getElementById("info").addEventListener("click", oeffneInfo);
+    document.bestellformular.rechnungsadresse[0].addEventListener("change", anzeigeRechnungsadresse);
+    document.bestellformular.rechnungsadresse[1].addEventListener("change", anzeigeRechnungsadresse);
 }
 function berechnePreis() {
     let anzahl = document.bestellformular.anzahl.value;
@@ -91,5 +93,12 @@ function oeffneInfo() {
         window.open("https://www.ups.com", "_blank", "width=500,height=500");
     } else {
         window.open("https://www.hermes.com/", "_blank", "width=500,height=500");
+    }
+}
+function anzeigeRechnungsadresse() {
+    if (document.bestellformular.rechnungsadresse[1].checked == true) {
+        document.getElementById("rechnungsadresse").style.display = "block";
+    } else {
+        document.getElementById("rechnungsadresse").style.display = "none";
     }
 }

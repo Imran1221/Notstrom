@@ -44,8 +44,8 @@
                 <label id="strValidierung"></label>
             </p>
 
-            <p><label for="plz">PLZ</label><br />
-                <input type="text" name="plz" />
+            <p><label for="plz">PLZ:</label><br />
+                <input type="text" name="plz" autocomplete="postal-code" />
                 <label id="plzValidierung"></label>
             </p>
 
@@ -73,6 +73,30 @@
                 </select>
                 <a id="info">[info]</a>
             </p>
+            <p>
+                <input type="radio" name="rechnungsadresse" id="identisch" value="y" checked />Rechnungsadresse ist
+                identisch
+                <input type="radio" name="rechnungsadresse" id="nichtIdentisch" value="n" />abweichende Rechnungsadresse
+            </p>
+            <div id="rechnungsadresse">
+                <!--Wenn Rechnungsadresse nicht identisch-->
+                <p>Firma:<br />
+                    <input type="text" name="firma" required="required" />
+                </p>
+
+                <p>Straße:<br />
+                    <input type="text" name="str" />
+                </p>
+
+                <p><label for="plz">PLZ:</label><br />
+                    <input type="text" name="plz" autocomplete="postal-code" />
+                </p>
+
+                <p>Ort:<br />
+                    <input type="text" name="ort" />
+                </p>
+
+            </div>
             <p>
                 <input type="checkbox" name="agb" value="" id="agbChecker"> Datenschutz AGB zustimmem
                 <label id="agbValidierung"></label>
