@@ -7,8 +7,12 @@ function init() {
     document.getElementById("waehrung").addEventListener("change", berechnePreis);
     document.bestellformular.addEventListener("submit", function (evt) { pruefeFormular(evt) });
     document.getElementById("info").addEventListener("click", oeffneInfo);
-    document.bestellformular.rechnungsadresse[0].addEventListener("change", anzeigeRechnungsadresse);
-    document.bestellformular.rechnungsadresse[1].addEventListener("change", anzeigeRechnungsadresse);
+    let rad = document.bestellformular.rechnungsadresse;
+    for (let i = 0; i < rad.length; i++) { //Adds event onto all radioboxes with name addressRadio
+        rad[i].addEventListener("click", anzeigeRechnungsadresse);
+    }
+    /*document.bestellformular.rechnungsadresse[0].addEventListener("change", anzeigeRechnungsadresse);
+    document.bestellformular.rechnungsadresse[1].addEventListener("change", anzeigeRechnungsadresse);*/
 }
 function berechnePreis() {
     let anzahl = document.bestellformular.anzahl.value;
